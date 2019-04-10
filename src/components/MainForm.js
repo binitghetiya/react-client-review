@@ -14,6 +14,7 @@ import SelectClient from "./tabs/SelectClient";
 import SelectDate from "./tabs/SelectDate";
 import AddReview from "./tabs/AddReview";
 import AddEmails from "./tabs/AddEmails";
+import Print from "./tabs/Print";
 
 import "./MainForm.css";
 
@@ -29,7 +30,7 @@ export default class Example extends React.Component {
       date: new Date(),
       review: 7,
       comment: "",
-      emails: "",
+      emails: ""
     };
   }
 
@@ -73,7 +74,7 @@ export default class Example extends React.Component {
 
   render() {
     console.log(this.props, this.state);
-    const { client, date, review, comment,emails } = this.state;
+    const { client, date, review, comment, emails } = this.state;
     return (
       <Container>
         <div className="mrTop50" />
@@ -134,6 +135,18 @@ export default class Example extends React.Component {
                   Email
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({
+                    active: this.state.activeTab === "5"
+                  })}
+                  onClick={() => {
+                    this.toggle("5");
+                  }}
+                >
+                  Print
+                </NavLink>
+              </NavItem>
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
@@ -177,6 +190,23 @@ export default class Example extends React.Component {
               <TabPane tabId="4">
                 <div className="mrTop20" />
                 <AddEmails
+                  match={this.props.match}
+                  nextTab="5"
+                  prevTab="3"
+                  toggleTab={this.toggle}
+                  toggleEmails={this.toggleEmails}
+                  selectedDate={date}
+                  selectedClient={client}
+                  selectedReview={review}
+                  selectedComment={comment}
+                  selectedEmails={emails}
+                />
+              </TabPane>
+              <TabPane tabId="5">
+                <div className="mrTop20" />
+
+                <Print
+                  id={"singlePage"}
                   match={this.props.match}
                   nextTab="5"
                   prevTab="3"

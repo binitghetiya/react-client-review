@@ -16,3 +16,7 @@
 .next {
     float: right;
 }
+.printOnlyClass {
+    width: 100%;
+    height: 100%;
+}

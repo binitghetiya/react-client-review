@@ -13,6 +13,7 @@ import classnames from "classnames";
 import SelectClient from "./tabs/SelectClient";
 import SelectDate from "./tabs/SelectDate";
 import AddReview from "./tabs/AddReview";
+import AddEmails from "./tabs/AddEmails";
 
 import "./MainForm.css";
 
@@ -27,13 +28,20 @@ export default class Example extends React.Component {
       client: "",
       date: new Date(),
       review: 7,
-      comment: ""
+      comment: "",
+      emails: "",
     };
   }
 
   toggleClient = client => {
     this.setState({
       client
+    });
+  };
+
+  toggleEmails = emails => {
+    this.setState({
+      emails
     });
   };
 
@@ -65,7 +73,7 @@ export default class Example extends React.Component {
 
   render() {
     console.log(this.props, this.state);
-    const { client, date, review, comment } = this.state;
+    const { client, date, review, comment,emails } = this.state;
     return (
       <Container>
         <div className="mrTop50" />
@@ -168,7 +176,18 @@ export default class Example extends React.Component {
               </TabPane>
               <TabPane tabId="4">
                 <div className="mrTop20" />
-                <h1>adasd</h1>
+                <AddEmails
+                  match={this.props.match}
+                  nextTab="5"
+                  prevTab="3"
+                  toggleTab={this.toggle}
+                  toggleEmails={this.toggleEmails}
+                  selectedDate={date}
+                  selectedClient={client}
+                  selectedReview={review}
+                  selectedComment={comment}
+                  selectedEmails={emails}
+                />
               </TabPane>
             </TabContent>
           </Col>

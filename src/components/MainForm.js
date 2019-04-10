@@ -29,8 +29,8 @@ export default class Example extends React.Component {
       client: "",
       date: new Date(),
       review: 7,
-      comment: "",
-      emails: ""
+      comment: "asd",
+      emails: "asda@sd.com"
     };
   }
 

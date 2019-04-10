@@ -62,7 +62,7 @@ export default class SelectClient extends React.Component {
         <Form>
           <FormGroup>
             <Label for="exampleText">
-              Add Emails to send an email (seperated by ,)
+              Add Email to send an email
             </Label>
             <Input
               type="email"

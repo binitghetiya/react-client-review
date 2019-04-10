@@ -47,7 +47,8 @@ export default class SelectClient extends React.Component {
       selectedDate,
       selectedClient,
       selectedComment,
-      selectedEmails
+      selectedEmails,
+      selectedReview
     } = this.props;
     if (!selectedClient) {
       return <div>Please select Client first</div>;
@@ -61,34 +62,30 @@ export default class SelectClient extends React.Component {
     if (!selectedEmails) {
       return <div>Please add email first</div>;
     }
-    const { id, singleMode } = this.state;
+    const { id } = this.state;
     return (
       <div className="printOnlyClass">
-        <PrintButton id={"singlePage"} label={"Print single page"} />
+        <PrintButton id={"singlePage"} label={"Download Review"} />
         <div
           id={id}
           className="bg-white shadow-1 center pa4"
-          style={{ width: "210mm", height: singleMode ? "297mm" : "" }}
         >
-          <div className="f2 mb2">Hello</div>
+          <div className="f3 mb2">{selectedClient}</div>
           <div>
-            You can add any valid html markup to this page, as long as it
-            doesn't overflows
+            Date : {selectedDate.toISOString().substring(0, 10)}
           </div>
-
           <div className="cf w-100 mt4">
-            <div className="fl w-50 bg-washed-blue vh-25 pa3">Floats</div>
-            <div className="fl w-50 bg-washed-red vh-25 pa3">Floats</div>
+            <div className="fl w-30 bg-washed-blue vh-5">Email: </div>
+            <div className="fl w-50 bg-washed-blue vh-5"><b>{selectedEmails}</b></div>
           </div>
-
-          <div className="f3 mt4">Lists</div>
-          <ul>
-            <li>Benjamin Franklin</li>
-            <li>Thomas Alva Edison</li>
-          </ul>
-
-          <div className="f3 mt4 mb2">Even images</div>
-          <div className="tc" />
+          <div className="cf w-100">
+            <div className="fl w-30 bg-washed-blue vh-5">Review: </div>
+            <div className="fl w-50 bg-washed-blue vh-5"><b>{selectedReview} / 10</b></div>
+          </div>
+          <div className="cf w-100">
+            <div className="fl w-30 bg-washed-blue vh-10">Comment: </div>
+            <div className="fl w-50 bg-washed-blue vh-10"><b>{selectedComment}</b></div>
+          </div>
         </div>
       </div>
     );
